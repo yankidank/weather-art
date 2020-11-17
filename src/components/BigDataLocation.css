@@ -1,0 +1,28 @@
+.BigDataLocation {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+}
+.BigDataCity-inactive {
+	opacity:0.75;
+}
+.BigDataCity:hover {
+	opacity:1;
+}
+.BigDataCity {
+	position: absolute;
+	height: 30px;
+	left: 30px;
+	top: 30px;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 30px;
+	color:#FFF;
+	flex: none;
+	order: 0;
+	align-self: center;
+	flex-grow: 0;
+	margin: 0px 0px;
+	cursor:pointer;
+}

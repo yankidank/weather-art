@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './BigDataLocation.css';
 
 // Expects GPS object with latitude and longitude values
 function BigDataLocation(props) {
