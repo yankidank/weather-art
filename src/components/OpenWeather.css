@@ -1,44 +1,45 @@
-
 .OpenWeather {
-	font-weight:500;
-	position: absolute;
-	left: 30px;
-	top: 100px;
-	font-size: 28px;
 	color: #FFFFFF;
+	margin-top:36px;
 }
 .weather-data-title {
 	font-weight:500;
 }
+.weather-data-details {
+	margin-top:30px;
+}
 .weather-temp {
-	font-weight: 200;
 	font-size: 100px;
+	font-weight: 200;
+	line-height: .8;
 }
 .weather-condition{
-	font-weight:600;
+	font-weight:500;
 	font-size: 32px;
 	margin-top:20px;
 }
-.weather-twilight, 
-.weather-wind, 
-.weather-uvi {
-	font-size: 20px;
+.weather-day{
+	font-size: 32px;
+	margin-left:20px;
 }
 .weather-data-element.weather-twilight,
 .weather-data-element.weather-wind,
 .weather-data-element.weather-uvi {
 	margin-left:5px;
-	font-weight:200;
-}
-.weather-detail-spacer {
-	margin-top:40px;
 }
 .weather-forecast {
-	font-weight:200;
-	font-size: 20px;
 	line-height:2em;
 	border-bottom:1px solid rgba(255, 255, 255, 0.5);
 }
 .weather-forecast a:hover {
 	border-bottom-style:dotted;
+}
+@media only screen and (max-height: 500px) {
+	.weather-data-conditions {
+		float: left;
+	}
+  .weather-data-details {
+		margin: 0px 0px 0px 36px;
+		float: left;
+	}
 }

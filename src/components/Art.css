@@ -1,0 +1,26 @@
+.art-wallpaper {
+	z-index:-1;
+	float:left;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.art-src{
+	height:100vh;
+	background: rgb(0,0,0);
+	background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+}
+.art-src img{
+	width:100%;
+	height:100vh;
+	object-fit: cover;
+	position: relative;
+	z-index: -1;
+}
+.art-details {
+	position: absolute;
+	bottom: 24px;
+}
+.art-artist{
+	font-weight: 500;
+}

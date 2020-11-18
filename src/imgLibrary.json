@@ -1,0 +1,23 @@
+[
+	{
+		"_id": 1,
+		"src": "./images/Caillebotte_ParisStreetRainyDay.jpg",
+		"url": "https://www.artic.edu/artworks/20684/paris-street-rainy-day",
+		"artist": "Gustave Caillebotte",
+		"title": "Paris Street; Rainy Day",
+		"date": "1876-1877",
+		"medium": "Oil on canvas",
+		"attributes": {
+			"time": "day",
+			"clear": false,
+			"clouds": true,
+			"cloudEstimate": 80,
+			"drizzle": true,
+			"rain": true,
+			"snow": false,
+			"temp": null,
+			"fog": false,
+			"windy": false
+		}
+	}
+]

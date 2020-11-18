@@ -1,7 +1,19 @@
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
+html, body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 body {
 	font-family: 'Helvetica Neue', 'Work Sans', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.5;
 	background:#000;
 	color:#fff;
+	min-height: 100%;
 }
 a {
 	text-decoration:none;
@@ -11,3 +23,18 @@ a:hover {
 	color:#fff;
 	border-bottom:1px solid #fff;
 }
+.App {
+	display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 80vh auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header header"
+    "sidebar sidebar main"
+		"footer footer footer";
+	padding:30px 0 0 30px;
+}
+.footer { grid-area: footer; }
+.header { grid-area: header; }
+.main { grid-area: main; }
+.sidebar { grid-area: sidebar; }

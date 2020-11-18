@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BigDataLocation from "./components/BigDataLocation";
 import OpenWeather from "./components/OpenWeather";
+import Art from "./components/Art";
 
 function App() {
   // Default States
@@ -25,8 +26,19 @@ function App() {
 
   return (
     <div className="App">
-      <BigDataLocation GPS={GPS} />
-      <OpenWeather GPS={GPS} />
+      <div className="footer">
+        {/* TBD: Pass the weather */}
+        <Art weather={GPS} />
+      </div>
+      <div className="header">
+        <BigDataLocation GPS={GPS} />
+      </div>
+      <div className="sidebar">
+        <OpenWeather GPS={GPS} />
+      </div>
+      <div className="main">
+        {/* INTENTIONALLY BLANK */}
+      </div>
     </div>
   );
 }

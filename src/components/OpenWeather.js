@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 import SimpleDateTime  from 'react-simple-timestamp-to-date';
 import './OpenWeather.css';
 
@@ -31,61 +32,67 @@ function OpenWeather(props) {
 		<div className="OpenWeather">
 			{!loading ? 
 				<div className="weather-data api-complete">
-					<div className="weather-data-item">
-						<span className="weather-data-element weather-temp">
-							{weather.current.temp ? Math.round(weather.current.temp)+'°' : ''}
-						</span>
+					<div className="weather-data-conditions">
+						<div className="weather-data-item">
+							<span className="weather-data-element weather-temp">
+								{weather.current.temp ? Math.round(weather.current.temp)+'°' : ''}
+							</span>
+						</div>
+						<div className="weather-data-item">
+							<span className="weather-data-element weather-condition">
+								{weather.current.weather[0].main ? weather.current.weather[0].main : ''}
+							</span>
+							<span className="weather-data-element weather-day">
+								{_.maxBy(weather.hourly.slice(0,24), 'temp') ? Math.round(_.maxBy(weather.hourly.slice(0,24), 'temp').temp)+'°' : ''}
+									/
+								{_.minBy(weather.hourly.slice(0,24), 'temp') ? Math.round(_.minBy(weather.hourly.slice(0,24), 'temp').temp)+'°' : ''}
+							</span>
+						</div>
 					</div>
-					<div className="weather-data-item">
-						<span className="weather-data-element weather-condition">
-							{weather.current.weather[0].main ? weather.current.weather[0].main : ''}
-						</span>
-					</div>
-					{/* 
-						ADD 24 HR HIGH / LOW
-					*/}
-					<div className="weather-data-item weather-detail-spacer">
-						<span className="weather-data-title weather-twilight">
-							{timestamp < weather.current.sunrise ?
-								'Sunrise'
+					<div className="weather-data-details">
+						<div className="weather-data-item">
+							<span className="weather-data-title weather-twilight">
+								{timestamp < weather.current.sunrise ?
+									'Sunrise'
+									:
+								timestamp > weather.current.sunset ?
+									'Sunrise'
+									:
+									'Sunset'
+								}
+							</span>
+							<span className="weather-data-element weather-twilight">
+								{timestamp < weather.current.sunrise ?
+									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
+								: timestamp > weather.current.sunset ?
+									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
 								:
-							timestamp > weather.current.sunset ?
-								'Sunrise'
-								:
-								'Sunset'
-							}
-						</span>
-						<span className="weather-data-element weather-twilight">
-							{timestamp < weather.current.sunrise ?
-								<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
-							: timestamp > weather.current.sunset ?
-								<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
-							:
-								<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunset ? weather.current.sunset : ''}</SimpleDateTime>
-							}
-							{/*	<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{timestamp ? timestamp : ''}</SimpleDateTime> */}	
-						</span>
-					</div>
-					<div className="weather-data-item">
-						<span className="weather-data-title weather-wind">
-							Winds
-						</span>
-						<span className="weather-data-element weather-wind">
-							{weather.current.wind_speed ? Math.round(weather.current.wind_speed)+' mph' : ''}
-						</span>
-					</div>
-					<div className="weather-data-item">
-						<span className="weather-data-title weather-uvi">
-							UV Index
-						</span>
-						<span className="weather-data-element weather-uvi">
-							{weather.current.uvi ? Math.round(weather.current.uvi) : ''}
-						</span>
-					</div>
-					<div className="weather-data-item">
-						<span className="weather-data-element weather-forecast">
-							<a href="#">5 Day Forecast</a>
-						</span>
+									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunset ? weather.current.sunset : ''}</SimpleDateTime>
+								}
+								{/*	<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{timestamp ? timestamp : ''}</SimpleDateTime> */}	
+							</span>
+						</div>
+						<div className="weather-data-item">
+							<span className="weather-data-title weather-wind">
+								Winds
+							</span>
+							<span className="weather-data-element weather-wind">
+								{weather.current.wind_speed ? Math.round(weather.current.wind_speed)+' mph' : ''}
+							</span>
+						</div>
+						<div className="weather-data-item">
+							<span className="weather-data-title weather-uvi">
+								UV Index
+							</span>
+							<span className="weather-data-element weather-uvi">
+								{weather.current.uvi ? Math.round(weather.current.uvi) : ''}
+							</span>
+						</div>
+						<div className="weather-data-item">
+							<span className="weather-data-element weather-forecast">
+								<a href="https://openweathermap.org/">8-day Forecast</a>
+							</span>
+						</div>
 					</div>
 				</div>
 			:
