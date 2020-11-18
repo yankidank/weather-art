@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import BigDataLocation from "./components/BigDataLocation";
+// import BigDataLocation from "./components/BigDataLocation";
+import IpInfo from "./components/IpInfo";
 import OpenWeather from "./components/OpenWeather";
 import Art from "./components/Art";
 
@@ -17,7 +18,6 @@ function App() {
       // Update GPS
       setGPS({lat: position.coords.latitude, lon: position.coords.longitude})
     }
-
   }
   
 	useEffect(() => {
@@ -31,7 +31,8 @@ function App() {
         <Art weather={GPS} />
       </div>
       <div className="header">
-        <BigDataLocation GPS={GPS} />
+        <IpInfo />
+        {/* <BigDataLocation GPS={GPS} /> */}
       </div>
       <div className="sidebar">
         <OpenWeather GPS={GPS} />

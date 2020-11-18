@@ -9,7 +9,7 @@ dayjs.extend(localizedFormat)
 // Expects GPS object with latitude and longitude values
 function OpenWeather(props) {
 	const {GPS} = props;
-	const openWeatherAPI = process.env.REACT_APP_OPENWEATHERAPI; // Configure API in .env.local
+	const openWeatherAPI = process.env.REACT_APP_OPENWEATHER_API; // Configure API in .env.local
 	const [loading, setLoading] = useState(true);
 	const [weather, setWeather] = useState({});
 	
