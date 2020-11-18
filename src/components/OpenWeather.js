@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import SimpleDateTime  from 'react-simple-timestamp-to-date';
 import './OpenWeather.css';
+import dayjs from 'dayjs';
 
 // Expects GPS object with latitude and longitude values
 function OpenWeather(props) {
@@ -63,11 +63,11 @@ function OpenWeather(props) {
 							</span>
 							<span className="weather-data-element weather-twilight">
 								{timestamp < weather.current.sunrise ?
-									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
+									weather.current.sunrise ? dayjs.unix(weather.current.sunrise).format('LT') : ''
 								: timestamp > weather.current.sunset ?
-									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunrise ? weather.current.sunrise : ''}</SimpleDateTime>
+									weather.current.sunrise ? dayjs.unix(weather.current.sunrise).format('LT') : ''
 								:
-									<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{weather.current.sunset ? weather.current.sunset : ''}</SimpleDateTime>
+									weather.current.sunset ? weather.current.sunset : ''
 								}
 								{/*	<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{timestamp ? timestamp : ''}</SimpleDateTime> */}	
 							</span>
