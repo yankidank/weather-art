@@ -3,6 +3,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import './OpenWeather.css';
 import dayjs from 'dayjs';
+const localizedFormat = require('dayjs/plugin/localizedFormat')
+dayjs.extend(localizedFormat)
 
 // Expects GPS object with latitude and longitude values
 function OpenWeather(props) {
@@ -67,7 +69,7 @@ function OpenWeather(props) {
 								: timestamp > weather.current.sunset ?
 									weather.current.sunrise ? dayjs.unix(weather.current.sunrise).format('LT') : ''
 								:
-									weather.current.sunset ? weather.current.sunset : ''
+									weather.current.sunset ? dayjs.unix(weather.current.sunset).format('LT') : ''
 								}
 								{/*	<SimpleDateTime format="YMD" showDate="0" dateSeparator="/" timeSeparator=":" meridians="1">{timestamp ? timestamp : ''}</SimpleDateTime> */}	
 							</span>
