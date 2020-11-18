@@ -1,5 +1,7 @@
 # Weather Art
 
+![weather-art-1](https://user-images.githubusercontent.com/18619/99486266-d2f29800-2918-11eb-8c97-09142997da51.jpg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## API Services Used
